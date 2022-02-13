@@ -11,37 +11,30 @@ import java.util.Scanner;
  *
  * @author Utilizador
  */
-public class PesquisaBinaria {
+public class NewMain {
 
     public static void main(String[] args) {
         int vetor[] = new int[8];
 
         for (int i = 0; i < vetor.length; i++) {
-            vetor[i] = i * 2;
+            vetor[i] = (int) (Math.random() * 10);
             System.out.println(vetor[i]);
         }
 
-        System.out.println("Qual o numero procurado?");
+        System.out.println("Qual o numero que pretende pesquisar?");
         Scanner leitor = new Scanner(System.in);
         int procurado = leitor.nextInt();
-
-        boolean encontrou = false;
-        int inicio = 0;
-        int fim = vetor.length - 1;
-        int meio;
-        while (inicio <= fim) {
-            meio = (int) ((inicio + fim) / 2);
-            if (vetor[meio] == procurado) {
-                encontrou = true;
+        int i;
+        boolean encontrado = false;
+        for (i=0; i < vetor.length; i++) {
+            if (vetor[i] == procurado) {
+                encontrado = true;
                 break;
-            } else if (vetor[meio] < procurado) {
-                inicio = meio + 1;
-            }else{//só pode ser maior
-                fim = meio - 1;
             }
+            
         }
-        if(encontrou){
-            System.out.println("Encontrou");
+        if (encontrado) {
+            System.out.println("Encontrou na posição: ["+i+"]");
         }else{
             System.out.println("Não encontrou");
         }
